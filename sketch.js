@@ -47,6 +47,7 @@ function draw() {
   let dy = mouseY - halfHeight;
   let distance = sqrt(dx * dx + dy * dy);
 
+  // Calculate the distance from the mouse cursor to the center of the larger circle
   let angle = atan2(dy, dx);
   let x2 = halfWidth + cos(angle) * radius;
   let y2 = halfHeight + sin(angle) * radius;
@@ -131,11 +132,9 @@ function draw() {
   strokeWeight(1);
   line(halfWidth,halfHeight,x,y);
 
-  // Calculate the distance from the mouse cursor to the center of the larger circle
+  // Limit the distance so the smaller ellipse stays within the larger circle's boundary
   fill(134, 54, 96);
   noStroke();
-
-  // Limit the distance so the smaller ellipse stays within the larger circle's boundary
   if (distance > diameter) {
     circle(x2, y2, smallDiameter)
   } else {
